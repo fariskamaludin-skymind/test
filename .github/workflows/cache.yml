@@ -1,0 +1,17 @@
+name: Test Cache
+
+on: [push]
+
+job:
+  test-cache:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Copy repos
+        uses: actions/checkout@v2
+
+      - name: Download Liberica JDK 8
+        run: |
+          mkdir file && cd file
+          wget https://download.bell-sw.com/java/8u292+10/bellsoft-jdk8u292+10-linux-amd64.tar.gz
+          tar -xzf bellsoft-jdk8u292+10-linux-amd64.tar.gz
